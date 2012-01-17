@@ -2,7 +2,7 @@
 
 All API calls require an auth_token, which is used to authenticate the user.
 
-Only the board owner has access to the lanes and cards contained with a board.
+Only the board owner has access to the lanes and cards contained within a board.
 
 
 ## Boards
@@ -75,7 +75,7 @@ Example URL: http://localhost:3000/api/v1/lanes.json
   </tr>
   <tr>
     <td>DELETE lanes/:id.json</td>
-    <td>Deletes a lane.</td>
+    <td>Deletes a specific lane.</td>
     <td></td>
   </tr>
 </table>
@@ -113,7 +113,7 @@ Example URL: http://localhost:3000/api/v1/cards.json
   </tr>
   <tr>
     <td>DELETE cards/:id.json</td>
-    <td>Deletes a card.</td>
+    <td>Deletes a specific card.</td>
     <td></td>
   </tr>
 </table>
