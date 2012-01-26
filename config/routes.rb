@@ -8,7 +8,13 @@ KankanApi::Application.routes.draw do
     namespace :v1 do
       resources :boards
       resources :lanes
-      resources :cards
+      resources :cards do
+        get 'for_board', :on => :collection
+      end
+      #post 'users/authenticate'
+      
+      resources :tokens, :only => [:create, :destroy]
+      match '*all' => 'base#cor', :constraints => {:method => 'OPTIONS'}
     end
   end
   
@@ -17,7 +23,8 @@ KankanApi::Application.routes.draw do
   ##############################
   
   #devise_for :admin_users, ActiveAdmin::Devise.config
-  devise_for :users, :controllers => { :sessions => 'users/sessions' }
+  #devise_for :users, :controllers => { :sessions => 'users/sessions' }
+  devise_for :users
   
   ##############################
   # Routes for active admin

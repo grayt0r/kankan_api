@@ -1,10 +1,11 @@
 class Api::V1::CardsController < Api::V1::BaseController
   
   before_filter :authenticate_user!
-  before_filter :check_params, :only => [:index, :create]
+  before_filter :check_lane_id, :only => [:index, :create]
+  before_filter :check_board_id, :only => [:for_board]
   
   def index
-    @cards = Card.for(current_user)
+    @cards = Card.joins(:lane).where(:lanes => {:id => params[:lane_id]})
     respond_with(@cards)
   end
   
@@ -36,10 +37,21 @@ class Api::V1::CardsController < Api::V1::BaseController
     respond_with(@card)
   end
   
+  def for_board
+    @cards = Card.joins(:lane => :board).where(:lanes => {:boards => {:id => params[:board_id]}})
+    respond_with(@cards)
+  end
+  
   private
   
-  def check_params
+  def check_lane_id
     if !params[:lane_id]
+      render :json => { :status => :error, :error => "Missing param: lane_id." }, :status => 400
+    end
+  end
+  
+  def check_board_id
+    if !params[:board_id]
       render :json => { :status => :error, :error => "Missing param: board_id." }, :status => 400
     end
   end

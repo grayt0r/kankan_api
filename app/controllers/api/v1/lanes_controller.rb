@@ -4,7 +4,7 @@ class Api::V1::LanesController < Api::V1::BaseController
   before_filter :check_params, :only => [:index, :create]
   
   def index
-    @lanes = Lane.for(current_user)
+    @lanes = Lane.joins(:board).where(:boards => {:id => params[:board_id]})
     respond_with(@lanes)
   end
   

@@ -1,5 +1,5 @@
 class Users::SessionsController < Devise::SessionsController
-
+  
   def create
     # TODO: Check for api_key? http://stackoverflow.com/questions/8230855/rails-devise-ajax-call
     resource = warden.authenticate!(:scope => resource_name)

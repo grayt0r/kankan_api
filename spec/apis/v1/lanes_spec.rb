@@ -11,8 +11,10 @@ describe "Lanes API (v1)", :type => :api do
   before do
     @board1 = Factory(:board, { :title => "Kanban 1", :created_by => user1.id })
     @board2 = Factory(:board, { :title => "Kanban 2", :created_by => user2.id })
+    @board3 = Factory(:board, { :title => "Kanban 3", :created_by => user1.id })
     @lane1 = Factory(:lane, { :title => "Lane 1", :board_id => @board1.id })
     @lane2 = Factory(:lane, { :title => "Lane 2", :board_id => @board2.id })
+    @lane3 = Factory(:lane, { :title => "Lane 3", :board_id => @board3.id })
   end
   
   context "GET lanes (index)" do
