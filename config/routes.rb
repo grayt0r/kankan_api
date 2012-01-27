@@ -11,8 +11,6 @@ KankanApi::Application.routes.draw do
       resources :cards do
         get 'for_board', :on => :collection
       end
-      #post 'users/authenticate'
-      
       resources :tokens, :only => [:create, :destroy]
       match '*all' => 'base#cor', :constraints => {:method => 'OPTIONS'}
     end
@@ -34,14 +32,14 @@ KankanApi::Application.routes.draw do
   # Routes for home
   ##############################
   
-  get 'home/index'
-  root :to => 'home#index'
+  get 'welcome/hello'
+  root :to => 'welcome#hello'
   
   ##############################
   # Routes for CORS
   ##############################
   
-  match '*all' => 'application#cor', :constraints => {:method => 'OPTIONS'}
+  #match '*all' => 'application#cor', :constraints => {:method => 'OPTIONS'}
   
 
   # The priority is based upon order of creation:
