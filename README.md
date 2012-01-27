@@ -5,6 +5,15 @@ All API calls require an auth_token, which is used to authenticate the user.
 Only the board owner has access to the lanes and cards contained within a board.
 
 
+## Installation
+
+* git clone git://github.com/grayt0r/kankan_api.git
+* cd kankan_api
+* bundle install
+* rails s
+* Open http://0.0.0.0:3000 in your browser and check you see the welcome message
+
+
 ## Boards
 
 Example URL: http://localhost:3000/api/v1/boards.json
