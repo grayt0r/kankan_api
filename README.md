@@ -10,6 +10,7 @@ Only the board owner has access to the lanes and cards contained within a board.
 * git clone git://github.com/grayt0r/kankan_api.git
 * cd kankan_api
 * bundle install
+* rake db:create (OR rake db:migrate and then rake db:seed)
 * rails s
 * Open http://0.0.0.0:3000 in your browser and check you see the welcome message
 
