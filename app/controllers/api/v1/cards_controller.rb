@@ -1,7 +1,7 @@
 class Api::V1::CardsController < Api::V1::BaseController
   
   before_filter :authenticate_user!
-  before_filter :check_lane_id, :only => [:index, :create]
+  before_filter :check_lane_id, :only => [:index]
   before_filter :check_board_id, :only => [:for_board]
   
   def index
@@ -11,7 +11,6 @@ class Api::V1::CardsController < Api::V1::BaseController
   
   def create
     @card = Card.new(params[:card])
-    @card.lane_id = params[:lane_id]
     authorize! :create, @card
     @card.save
     respond_with(@card, :location => api_v1_cards_path(@card))
